@@ -1,0 +1,73 @@
+﻿@model CFIT.EF.TTCDL_ThiSinh
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Phiếu Đăng Ký</h2>
+
+    <hr />
+  
+
+
+    <form action="/Home/Create" method="post" >
+        <div class="form-group ">
+            <div class="col-md-2">
+                <label>Email</label>
+            </div>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" name="Email"/>
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <div class="col-md-2">
+                <label>Họ và Tên</label>
+            </div>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" name="HoTen" />
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <div class="col-md-2 ">
+                <label>Ngày Sinh</label>
+            </div>
+            <div class="col-lg-10">
+                <input type="date" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group ">
+            <div class="col-md-2 ">
+                <label>Giới Tính</label>
+            </div>
+            <div class="col-lg-10">
+                <input type="radio" name="GioiTinh" checked  value="True" /> Nam
+                <input type="radio" name="GioiTinh" value="False" /> Nữ
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <div class="col-md-2">
+                <label>Số chứng minh</label>
+            </div>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <div class="col-md-2">
+                <label>Điện thoại liên lạc</label>
+            </div>
+            <div class="col-lg-10">
+                <input type="tel" class="form-control" />
+            </div>
+        </div>
+
+        <input type="submit" class="btn btn-primary" />
+    </form>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
