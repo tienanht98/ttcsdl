@@ -1,4 +1,4 @@
-namespace CFIT.EF
+﻿namespace CFIT.EF
 {
     using System;
     using System.Collections.Generic;
@@ -15,14 +15,16 @@ namespace CFIT.EF
         }
 
         [Key]
-        [StringLength(10)]
-        public string IDThiSinh { get; set; }
+        public int IDThiSinh { get; set; }
 
         [Required]
         [StringLength(50)]
+        [Display(Name = "Họ và Tên")]
+
         public string HoTen { get; set; }
 
         [Column(TypeName = "date")]
+        [Display(Name = "Ngày Sinh")]
         public DateTime NgaySinh { get; set; }
 
         [Column(TypeName = "numeric")]

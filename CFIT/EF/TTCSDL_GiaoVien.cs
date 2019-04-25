@@ -1,4 +1,4 @@
-namespace CFIT.EF
+﻿namespace CFIT.EF
 {
     using System;
     using System.Collections.Generic;
@@ -15,23 +15,23 @@ namespace CFIT.EF
         }
 
         [Key]
-        [StringLength(10)]
-        public string IDGiaoVien { get; set; }
+        public int IDGiaoVien { get; set; }
 
-        [Required]
-        [StringLength(20)]
-        public string HoDem { get; set; }
-
-        [Required]
-        [StringLength(10)]
-        public string Ten { get; set; }
-
-        [Required]
+       
         [StringLength(50)]
+        [Required(ErrorMessage = "Mời Nhập Họ Tên")]
+        [Display(Name = "Họ và Tên")]
+        public string HoTen { get; set; }
+
+        
+        [StringLength(50)]
+        [Required(ErrorMessage = "Mời Nhập Đơn Vị")]
+        [Display(Name = "Đơn Vị")]
         public string DonVi { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Mời Nhập Cấp Bậc")]
         [StringLength(50)]
+        [Display(Name = "Cấp Bậc")]
         public string CapBac { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

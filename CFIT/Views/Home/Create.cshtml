@@ -7,16 +7,14 @@
 <h2>Phiếu Đăng Ký</h2>
 
     <hr />
-  
 
-
-    <form action="/Home/Create" method="post" >
+    <form action="/Home/Create" method="post">
         <div class="form-group ">
             <div class="col-md-2">
                 <label>Email</label>
             </div>
             <div class="col-lg-10">
-                <input type="text" class="form-control" name="Email"/>
+                <input type="text" class="form-control" name="Email" />
             </div>
         </div>
 
@@ -34,7 +32,7 @@
                 <label>Ngày Sinh</label>
             </div>
             <div class="col-lg-10">
-                <input type="date" class="form-control" />
+                <input type="date" class="form-control" name="NgaySinh"/>
             </div>
         </div>
         <div class="form-group ">
@@ -42,17 +40,31 @@
                 <label>Giới Tính</label>
             </div>
             <div class="col-lg-10">
-                <input type="radio" name="GioiTinh" checked  value="True" /> Nam
-                <input type="radio" name="GioiTinh" value="False" /> Nữ
-            </div>
+                <div class="col-lg-2">
+                    <input type="radio" name="GioiTinh" checked value="True" /> Nam
+                </div>
+                    <input type="radio" name="GioiTinh" value="False" /> Nữ
+                </div>
         </div>
+
+        <div class="form-group ">
+            <div class="col-md-2 ">
+                <label>Loại Thí Sinh</label>
+            </div>
+            <div class="col-lg-10">
+                <div class="col-lg-2">
+                    <input type="radio" name="LaHocVien" checked value="True" /> Là Học Viên
+                </div>
+                    <input type="radio" name="LaHocVien" value="False" /> Khác
+                </div>
+            </div>
 
         <div class="form-group ">
             <div class="col-md-2">
                 <label>Số chứng minh</label>
             </div>
             <div class="col-lg-10">
-                <input type="text" class="form-control" />
+                <input type="number" class="form-control" name="SoCMT" />
             </div>
         </div>
 
@@ -61,8 +73,29 @@
                 <label>Điện thoại liên lạc</label>
             </div>
             <div class="col-lg-10">
-                <input type="tel" class="form-control" />
+                <input type="tel" class="form-control" name="SoDienThoai" />
             </div>
+        </div>
+
+        <div class="form-group ">
+            <div class="col-md-2 ">
+                <label>Nhu Cầu</label>
+            </div>
+            <div class="col-lg-10">
+                <div class="col-lg-2"><input type="radio" name="NhuCau" checked value="False" /> Thi</div> 
+                <input type="radio" name="NhuCau" value="True" /> Ôn và Thi
+            </div>
+        </div>
+        <div class="form-group ">
+            <div class="col-md-2 ">
+                <label>Trình Độ</label>
+            </div>
+            <div class="col-lg-10">
+                <div class="col-lg-2">
+                    <input type="radio" name="TrinhDo" checked value="False" /> Cơ bản
+                </div>
+                    <input type="radio" name="TrinhDo" value="True" /> Nâng Cao
+</div>
         </div>
 
         <input type="submit" class="btn btn-primary" />

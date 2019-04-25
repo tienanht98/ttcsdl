@@ -8,11 +8,13 @@ namespace CFIT.EF
     public partial class DBContex : DbContext
     {
         public DBContex()
-            : base("name=DBContex1")
+            : base("name=DBContex")
         {
         }
 
         public virtual DbSet<TTCDL_ThiSinh> TTCDL_ThiSinh { get; set; }
+        public virtual DbSet<TTCSDL_BaiThi> TTCSDL_BaiThi { get; set; }
+        public virtual DbSet<TTCSDL_CapChungChi> TTCSDL_CapChungChi { get; set; }
         public virtual DbSet<TTCSDL_DanhSachThi> TTCSDL_DanhSachThi { get; set; }
         public virtual DbSet<TTCSDL_DSNopTien> TTCSDL_DSNopTien { get; set; }
         public virtual DbSet<TTCSDL_GiaOnThi> TTCSDL_GiaOnThi { get; set; }
@@ -28,11 +30,6 @@ namespace CFIT.EF
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<TTCDL_ThiSinh>()
-                .Property(e => e.IDThiSinh)
-                .IsFixedLength()
-                .IsUnicode(false);
-
             modelBuilder.Entity<TTCDL_ThiSinh>()
                 .Property(e => e.SoCMT)
                 .HasPrecision(12, 0);
@@ -50,30 +47,42 @@ namespace CFIT.EF
                 .WithRequired(e => e.TTCDL_ThiSinh)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<TTCSDL_BaiThi>()
+                .Property(e => e.SBD)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<TTCSDL_CapChungChi>()
+                .Property(e => e.SoVanBang)
+                .IsFixedLength();
+
+            modelBuilder.Entity<TTCSDL_CapChungChi>()
+                .Property(e => e.SoVaoSo)
+                .IsFixedLength();
+
+            modelBuilder.Entity<TTCSDL_CapChungChi>()
+                .Property(e => e.GhiChu)
+                .IsFixedLength();
+
+            modelBuilder.Entity<TTCSDL_CapChungChi>()
+                .Property(e => e.SBD)
+                .IsFixedLength()
+                .IsUnicode(false);
+
             modelBuilder.Entity<TTCSDL_DanhSachThi>()
                 .Property(e => e.SBD)
                 .IsFixedLength()
                 .IsUnicode(false);
 
             modelBuilder.Entity<TTCSDL_DanhSachThi>()
-                .Property(e => e.IDHoiDongThi)
-                .IsFixedLength()
-                .IsUnicode(false);
+                .HasMany(e => e.TTCSDL_BaiThi)
+                .WithRequired(e => e.TTCSDL_DanhSachThi)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<TTCSDL_DanhSachThi>()
-                .Property(e => e.IDNopTien)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<TTCSDL_DSNopTien>()
-                .Property(e => e.ID_NopTien)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<TTCSDL_DSNopTien>()
-                .Property(e => e.IDThiSinh)
-                .IsFixedLength()
-                .IsUnicode(false);
+                .HasMany(e => e.TTCSDL_CapChungChi)
+                .WithRequired(e => e.TTCSDL_DanhSachThi)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<TTCSDL_DSNopTien>()
                 .HasMany(e => e.TTCSDL_DanhSachThi)
@@ -105,9 +114,9 @@ namespace CFIT.EF
                 .IsUnicode(false);
 
             modelBuilder.Entity<TTCSDL_GiaoVien>()
-                .Property(e => e.IDGiaoVien)
-                .IsFixedLength()
-                .IsUnicode(false);
+                .HasMany(e => e.TTCSDL_ChiTietHoiDongThi)
+                .WithRequired(e => e.TTCSDL_GiaoVien)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<TTCSDL_HocVien>()
                 .HasMany(e => e.TTCSDL_GiaOnThi)
@@ -115,14 +124,14 @@ namespace CFIT.EF
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<TTCSDL_HoiDongThi>()
-                .Property(e => e.IDHoiDongThi)
+                .Property(e => e.MaKyThi)
                 .IsFixedLength()
                 .IsUnicode(false);
 
             modelBuilder.Entity<TTCSDL_HoiDongThi>()
-                .Property(e => e.MaKyThi)
-                .IsFixedLength()
-                .IsUnicode(false);
+                .HasMany(e => e.TTCSDL_CapChungChi)
+                .WithRequired(e => e.TTCSDL_HoiDongThi)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<TTCSDL_HoiDongThi>()
                 .HasMany(e => e.TTCSDL_DanhSachThi)
@@ -132,15 +141,11 @@ namespace CFIT.EF
             modelBuilder.Entity<TTCSDL_HoiDongThi>()
                 .HasMany(e => e.TTCSDL_ChiTietHoiDongThi)
                 .WithRequired(e => e.TTCSDL_HoiDongThi)
-                .HasForeignKey(e => e.ID_Hoi_Dong_Thi);
+                .HasForeignKey(e => e.ID_Hoi_Dong_Thi)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<TTCSDL_KyThi>()
                 .Property(e => e.MaKyThi)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<TTCSDL_NhiemVu>()
-                .Property(e => e.IDNhiemVu)
                 .IsFixedLength()
                 .IsUnicode(false);
 
@@ -153,21 +158,6 @@ namespace CFIT.EF
                 .HasMany(e => e.TTCSDL_GiaOnThi)
                 .WithRequired(e => e.TTCSDL_TrinhDo)
                 .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<TTCSDL_ChiTietHoiDongThi>()
-                .Property(e => e.ID_Hoi_Dong_Thi)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<TTCSDL_ChiTietHoiDongThi>()
-                .Property(e => e.IDGiaoVien)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<TTCSDL_ChiTietHoiDongThi>()
-                .Property(e => e.IDNhiemVu)
-                .IsFixedLength()
-                .IsUnicode(false);
         }
     }
 }

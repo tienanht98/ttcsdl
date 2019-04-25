@@ -10,20 +10,20 @@ namespace CFIT.EF
     {
         [Key]
         [Column(Order = 0)]
-        [StringLength(10)]
-        public string ID_Hoi_Dong_Thi { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int ID_Hoi_Dong_Thi { get; set; }
 
         [Key]
         [Column(Order = 1)]
-        [StringLength(10)]
-        public string IDGiaoVien { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int IDGiaoVien { get; set; }
 
         public string Note { get; set; }
 
         [Key]
         [Column(Order = 2)]
-        [StringLength(10)]
-        public string IDNhiemVu { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int IDNhiemVu { get; set; }
 
         public virtual TTCSDL_GiaoVien TTCSDL_GiaoVien { get; set; }
 

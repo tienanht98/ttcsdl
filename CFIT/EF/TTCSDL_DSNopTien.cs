@@ -15,12 +15,9 @@ namespace CFIT.EF
         }
 
         [Key]
-        [StringLength(10)]
-        public string ID_NopTien { get; set; }
+        public int ID_NopTien { get; set; }
 
-        [Required]
-        [StringLength(10)]
-        public string IDThiSinh { get; set; }
+        public int IDThiSinh { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime? NgayNop { get; set; }

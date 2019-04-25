@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using CFIT.EF;
+using CFIT.DAO;
+
 namespace CFIT.Controllers
 {
     public class HomeController : Controller
@@ -15,6 +17,8 @@ namespace CFIT.Controllers
         [HttpPost]
         public ActionResult Create(TTCDL_ThiSinh tTCDL_ThiSinh)
         {
+            ThiSinhDAO thiSinhDAO = new ThiSinhDAO();
+          var db =   thiSinhDAO.Insert(tTCDL_ThiSinh);
             return View();
         }
 

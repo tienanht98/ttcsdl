@@ -15,8 +15,7 @@ namespace CFIT.EF
         }
 
         [Key]
-        [StringLength(10)]
-        public string IDNhiemVu { get; set; }
+        public int IDNhiemVu { get; set; }
 
         [Required]
         [StringLength(50)]
