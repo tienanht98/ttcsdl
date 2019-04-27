@@ -22,5 +22,9 @@ namespace CFIT.DAO
             db.SaveChanges();
             return true;
         }
+        public TTCSDL_GiaoVien getByid(int id)
+        {
+            return db.TTCSDL_GiaoVien.SingleOrDefault(x => x.IDGiaoVien == id);
+        }
     }
 }

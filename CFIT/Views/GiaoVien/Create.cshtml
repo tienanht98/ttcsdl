@@ -1,0 +1,64 @@
+﻿@model CFIT.EF.TTCSDL_GiaoVien
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutsAdmin.cshtml";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>TTCSDL_GiaoVien</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.HoTen, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DonVi, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DonVi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DonVi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CapBac, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select name="CapBac" aria-controls="dataTables-example" class="form-control input-sm">
+                    <option value="Thiếu Úy">Thiếu Úy</option>
+                    <option value="Trung Úy">Trung Úy</option>
+                    <option value="Đại Úy">Đại Úy</option>
+                    <option value="Thiếu Tá">Thiếu Úy</option>
+                    <option value="Trung Tá">Thiếu Úy</option>
+                    <option value="Đại Tá">Thiếu Úy</option>
+                </select>
+                @Html.ValidationMessageFor(model => model.CapBac, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
+    @Scripts.Render("~/bundles/jqueryval")
+

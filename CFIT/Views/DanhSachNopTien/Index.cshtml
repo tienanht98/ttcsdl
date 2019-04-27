@@ -1,0 +1,88 @@
+﻿@model IEnumerable<CFIT.EF.TTCSDL_DSNopTien>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutsAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            <label> Họ Tên </label>
+        </th>
+        <th>
+            <label>Ngày Sinh </label>
+        </th>
+        <th>
+            <label>CMT </label>
+        </th>
+        <th>
+            <label>Thuộc HV</label>
+        </th>
+
+        <th>
+            <label>Ôn Thi </label>
+        </th>
+        <th>
+            <label>Thi </label>
+        </th>
+        <th>
+            <label>Tổng Tiền </label>
+        </th>
+        <th></th>
+    </tr>
+
+
+    @{
+        decimal TOng;
+        string x;
+    }
+    @foreach (var item in Model)
+    {
+        TOng = item.TTCSDL_GiaOnThi.GiaOnThi + item.TTCSDL_GiaOnThi.GiaThi;
+        
+            if (item.TTCDL_ThiSinh.LaHocVien)
+            {
+                x = "Có";
+            }
+            else
+            {
+                x = "Không";
+            }
+        
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TTCDL_ThiSinh.HoTen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TTCDL_ThiSinh.NgaySinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TTCDL_ThiSinh.SoCMT)
+            </td>
+            <td>
+                @x
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TTCSDL_GiaOnThi.GiaOnThi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TTCSDL_GiaOnThi.GiaThi)
+            </td>
+            <td>
+                @TOng
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID_NopTien }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID_NopTien }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID_NopTien })
+            </td>
+        </tr>
+    }
+
+</table>

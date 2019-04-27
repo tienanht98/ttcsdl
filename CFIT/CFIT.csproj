@@ -134,9 +134,15 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ChiTietHoiDongThiController.cs" />
+    <Compile Include="Controllers\DanhSachNopTienController.cs" />
     <Compile Include="Controllers\GiaoVienController.cs" />
+    <Compile Include="Controllers\GiaThiController.cs" />
     <Compile Include="Controllers\HomeAdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ThiSinhController.cs" />
+    <Compile Include="DAO\ChiTietHoiDongThiDAO.cs" />
+    <Compile Include="DAO\NhiemVuDAO.cs" />
     <Compile Include="DAO\GiaoVienDAO.cs" />
     <Compile Include="DAO\ThiSinhDAO.cs" />
     <Compile Include="EF\DBContex.cs" />
@@ -158,7 +164,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\GiaoVien.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -348,18 +353,28 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Create.cshtml" />
     <Content Include="Views\HomeAdmin\Create.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\HomeAdmin\Index.cshtml" />
     <Content Include="Views\HomeAdmin\Edit.cshtml" />
+    <Content Include="Views\GiaoVien\Index.cshtml" />
+    <Content Include="Views\GiaoVien\Create.cshtml" />
+    <Content Include="Views\GiaoVien\Edit.cshtml" />
+    <Content Include="Views\Shared\_LayoutsAdmin.cshtml" />
+    <Content Include="Views\Shared\_Navigation.cshtml" />
+    <Content Include="Views\ThiSinh\Index.cshtml" />
+    <Content Include="Views\ChiTietHoiDongThi\Index.cshtml" />
+    <Content Include="Views\ChiTietHoiDongThi\Createaa.cshtml" />
+    <Content Include="Views\GiaThi\Index.cshtml" />
+    <Content Include="Views\GiaThi\Create.cshtml" />
+    <Content Include="Views\DanhSachNopTien\Index.cshtml" />
+    <Content Include="Views\ChiTietHoiDongThi\Edit.cshtml" />
+    <Content Include="Views\ChiTietHoiDongThi\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\GiaoVien\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

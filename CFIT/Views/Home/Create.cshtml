@@ -24,6 +24,8 @@
             </div>
             <div class="col-lg-10">
                 <input type="text" class="form-control" name="HoTen" />
+                @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
+
             </div>
         </div>
 

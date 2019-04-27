@@ -1,4 +1,4 @@
-﻿namespace CFIT.EF
+namespace CFIT.EF
 {
     using System;
     using System.Collections.Generic;
@@ -19,23 +19,20 @@
 
         [Required]
         [StringLength(50)]
-        [Display(Name = "Họ và Tên")]
-
         public string HoTen { get; set; }
 
         [Column(TypeName = "date")]
-        [Display(Name = "Ngày Sinh")]
         public DateTime NgaySinh { get; set; }
 
         [Column(TypeName = "numeric")]
-        public decimal SoCMT { get; set; }
+        public long SoCMT { get; set; }
 
         public bool LaHocVien { get; set; }
 
         public bool NhuCau { get; set; }
 
         [Column(TypeName = "numeric")]
-        public decimal SoDienThoai { get; set; }
+        public long SoDienThoai { get; set; }
 
         public bool TrinhDo { get; set; }
 
@@ -43,6 +40,14 @@
 
         [StringLength(50)]
         public string Email { get; set; }
+
+        public virtual TTCSDL_GioiTinh TTCSDL_GioiTinh { get; set; }
+
+        public virtual TTCSDL_HocVien TTCSDL_HocVien { get; set; }
+
+        public virtual TTCSDL_NhuCau TTCSDL_NhuCau { get; set; }
+
+        public virtual TTCSDL_TrinhDo TTCSDL_TrinhDo { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TTCSDL_DSNopTien> TTCSDL_DSNopTien { get; set; }

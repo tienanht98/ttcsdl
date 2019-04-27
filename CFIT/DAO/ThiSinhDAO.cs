@@ -19,5 +19,9 @@ namespace CFIT.DAO
             return entity.IDThiSinh;
 
         }
+        public List<TTCDL_ThiSinh> getALL()
+        {
+            return db.TTCDL_ThiSinh.OrderBy(x => x.HoTen).ToList();
+        }
     }
 }

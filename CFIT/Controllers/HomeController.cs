@@ -18,7 +18,9 @@ namespace CFIT.Controllers
         public ActionResult Create(TTCDL_ThiSinh tTCDL_ThiSinh)
         {
             ThiSinhDAO thiSinhDAO = new ThiSinhDAO();
-          var db =   thiSinhDAO.Insert(tTCDL_ThiSinh);
+            thiSinhDAO.Insert(tTCDL_ThiSinh);
+            DBContex db = new DBContex();
+            db.TTCSDL_NhiemVu.SqlQuery("exec ")
             return View();
         }
 

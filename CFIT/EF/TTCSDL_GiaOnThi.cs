@@ -8,9 +8,15 @@ namespace CFIT.EF
 
     public partial class TTCSDL_GiaOnThi
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TTCSDL_GiaOnThi()
+        {
+            TTCSDL_DSNopTien = new HashSet<TTCSDL_DSNopTien>();
+        }
+
         [Key]
-        [StringLength(10)]
-        public string ID_GiaOnThi { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int ID_GiaOnThi { get; set; }
 
         public bool TrinhDo { get; set; }
 
@@ -30,6 +36,9 @@ namespace CFIT.EF
 
         [StringLength(10)]
         public string MaKyThi { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TTCSDL_DSNopTien> TTCSDL_DSNopTien { get; set; }
 
         public virtual TTCSDL_HocVien TTCSDL_HocVien { get; set; }
 

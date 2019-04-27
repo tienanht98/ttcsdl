@@ -1,0 +1,59 @@
+﻿@model IEnumerable<CFIT.EF.TTCSDL_ChiTietHoiDongThi>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutsAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TTCSDL_GiaoVien.HoTen)
+        </th>
+        <th>
+            <label>Đơn Vị  </label>
+        </th>
+        <th>
+            <label>Cấp Bậc</label>
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.TTCSDL_NhiemVu.TenNhiemVu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Note)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TTCSDL_GiaoVien.HoTen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TTCSDL_GiaoVien.DonVi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TTCSDL_GiaoVien.CapBac)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TTCSDL_NhiemVu.TenNhiemVu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Note)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {  id=item.IDGiaoVien }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

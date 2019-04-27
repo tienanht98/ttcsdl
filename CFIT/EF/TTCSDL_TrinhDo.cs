@@ -11,6 +11,7 @@ namespace CFIT.EF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TTCSDL_TrinhDo()
         {
+            TTCDL_ThiSinh = new HashSet<TTCDL_ThiSinh>();
             TTCSDL_GiaOnThi = new HashSet<TTCSDL_GiaOnThi>();
         }
 
@@ -20,6 +21,9 @@ namespace CFIT.EF
         [Required]
         [StringLength(50)]
         public string LoaiTrinhDo { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TTCDL_ThiSinh> TTCDL_ThiSinh { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TTCSDL_GiaOnThi> TTCSDL_GiaOnThi { get; set; }

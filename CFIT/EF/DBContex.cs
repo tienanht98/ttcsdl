@@ -31,12 +31,12 @@ namespace CFIT.EF
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<TTCDL_ThiSinh>()
-                .Property(e => e.SoCMT)
-                .HasPrecision(12, 0);
+                .Property(e => e.SoCMT);
+
 
             modelBuilder.Entity<TTCDL_ThiSinh>()
-                .Property(e => e.SoDienThoai)
-                .HasPrecision(11, 0);
+                .Property(e => e.SoDienThoai);
+               
 
             modelBuilder.Entity<TTCDL_ThiSinh>()
                 .Property(e => e.Email)
@@ -91,11 +91,6 @@ namespace CFIT.EF
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<TTCSDL_GiaOnThi>()
-                .Property(e => e.ID_GiaOnThi)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<TTCSDL_GiaOnThi>()
                 .Property(e => e.GiaOnThi)
                 .HasPrecision(19, 4);
 
@@ -113,9 +108,20 @@ namespace CFIT.EF
                 .IsFixedLength()
                 .IsUnicode(false);
 
+            modelBuilder.Entity<TTCSDL_GiaOnThi>()
+                .HasMany(e => e.TTCSDL_DSNopTien)
+                .WithRequired(e => e.TTCSDL_GiaOnThi)
+                .HasForeignKey(e => e.IDGia)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<TTCSDL_GiaoVien>()
                 .HasMany(e => e.TTCSDL_ChiTietHoiDongThi)
                 .WithRequired(e => e.TTCSDL_GiaoVien)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<TTCSDL_HocVien>()
+                .HasMany(e => e.TTCDL_ThiSinh)
+                .WithRequired(e => e.TTCSDL_HocVien)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<TTCSDL_HocVien>()
@@ -150,8 +156,18 @@ namespace CFIT.EF
                 .IsUnicode(false);
 
             modelBuilder.Entity<TTCSDL_NhuCau>()
+                .HasMany(e => e.TTCDL_ThiSinh)
+                .WithRequired(e => e.TTCSDL_NhuCau)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<TTCSDL_NhuCau>()
                 .HasMany(e => e.TTCSDL_GiaOnThi)
                 .WithRequired(e => e.TTCSDL_NhuCau)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<TTCSDL_TrinhDo>()
+                .HasMany(e => e.TTCDL_ThiSinh)
+                .WithRequired(e => e.TTCSDL_TrinhDo)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<TTCSDL_TrinhDo>()

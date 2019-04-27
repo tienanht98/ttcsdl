@@ -30,7 +30,13 @@ namespace CFIT.Controllers
                 GiaoVienDAO giaoVien = new GiaoVienDAO();
                 giaoVien.Insert(tTCSDL_GiaoVien);
             }
-            
+            else
+            {
+                ModelState.AddModelError("", "Đăng nhập không thành công");
+
+            }
+
+
             return  RedirectToAction("Index");
         }
         public ActionResult Edit()

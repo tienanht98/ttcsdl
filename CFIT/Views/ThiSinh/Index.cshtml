@@ -1,0 +1,51 @@
+﻿@model IEnumerable<CFIT.EF.TTCDL_ThiSinh>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutsAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    
+       
+    
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.HoTen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgaySinh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.HoTen)
+        </td>
+        <td>
+            @DateTime.Parse(item.NgaySinh.ToString()).ToString("dd/MM/yyyy")
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IDThiSinh }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IDThiSinh }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IDThiSinh })
+        </td>
+    </tr>
+}
+
+</table>
